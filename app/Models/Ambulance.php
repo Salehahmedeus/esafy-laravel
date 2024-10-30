@@ -9,6 +9,8 @@ class Ambulance extends Model
     protected $fillable = [
         'license_number',
         'status',
+        'latitude',
+        'longitude',
         'hospital_id',
         'driver_id',
 

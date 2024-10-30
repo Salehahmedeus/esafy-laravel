@@ -18,6 +18,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId(Hospital::class);
             $table->string('status');
+            $table->string('latitude');
+            $table->string('longitude');
             $table->string('license_number')->unique();
             $table->foreignId(Driver::class);
             $table->timestamps();
