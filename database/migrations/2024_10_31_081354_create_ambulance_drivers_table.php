@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\Ambulance;
-use App\Models\Hospital;
+use App\Models\Driver;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('drivers', function (Blueprint $table) {
+        Schema::create('ambulance_drivers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('phone')->unique();
-            $table->string('driver_license')->unique();
-            $table->foreignIdFor(Hospital::class)->constrained()->onDelete('cascade');
+            $table->foreignIdFor(Ambulance::class)->constrained()->onDelete('cascade');
+            $table->foreignIdFor(Driver::class)->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('drivers');
+        Schema::dropIfExists('ambulance_drivers');
     }
 };

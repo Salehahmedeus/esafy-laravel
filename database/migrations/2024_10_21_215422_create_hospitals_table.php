@@ -15,13 +15,10 @@ return new class extends Migration
     {
         Schema::create('hospitals', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Driver::class)->nullable();
             $table->foreignIdFor(Admin::class);
             $table->string('name');
             $table->string('phone')->unique();
-            $table->string('latitude');
             $table->string('address');
-            $table->string('longitude');
             $table->timestamps();
         });
     }

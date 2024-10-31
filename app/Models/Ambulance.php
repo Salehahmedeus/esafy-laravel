@@ -12,7 +12,6 @@ class Ambulance extends Model
         'latitude',
         'longitude',
         'hospital_id',
-        'driver_id',
 
     ];
 
@@ -24,10 +23,5 @@ class Ambulance extends Model
     public function hospital()
     {
         return $this->belongsTo(Hospital::class);
-    }
-
-    public function driver()
-    {
-        return $this->hasMany(Driver::class);
     }
 }

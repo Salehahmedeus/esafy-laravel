@@ -18,8 +18,6 @@ class HospitalController extends Controller
                 'message' => ' there is alradey a hospital  '
             ]);
         } else {
-
-
             $input = $request->validate([
                 'name' => ['string', 'required'],
                 'address' => ['string', 'required'],

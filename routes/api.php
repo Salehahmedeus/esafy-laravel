@@ -1,9 +1,14 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AmbulanceController;
+use App\Http\Controllers\AmbulanceDriverController;
+use App\Http\Controllers\CallController;
+use App\Http\Controllers\DriverController;
 use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\UserController;
 use App\Models\Admin;
+use App\Models\Ambulance;
 use App\Models\Hospital;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +38,15 @@ Route::middleware('auth:admin')->group(
 
         Route::post('admin/hospitalRegstration', [HospitalController::class, "registerHospital"]);
         Route::get('admin/index', [HospitalController::class, "index"]);
+
+        Route::post('admin/ambulance/add', [AmbulanceController::class, "store"]);
+
+
+        Route::post('admin/driver/add', [DriverController::class, "store"]);
+        Route::post('admin/driver/index', [DriverController::class, "index"]);
+        Route::post('admin/driver/assign', [AmbulanceDriverController::class, "store"]);
+
+        Route::post('admin/call', [CallController::class, "store"]);
     }
 
 );

@@ -16,9 +16,9 @@ return new class extends Migration
     {
         Schema::create('calls', function (Blueprint $table) {
             $table->id();
-            $table->foreignId(Hospital::class);
-            $table->foreignId(Users::class);
-            $table->foreignId(Ambulance::class);
+            $table->foreignIdFor(Hospital::class, 'ambulance_id');
+            $table->foreignIdFor(Users::class, 'user_id');
+            $table->foreignIdFor(Ambulance::class, 'hospital_id');
             $table->timestamps();
         });
     }

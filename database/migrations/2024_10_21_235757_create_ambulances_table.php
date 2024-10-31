@@ -16,12 +16,11 @@ return new class extends Migration
     {
         Schema::create('ambulances', function (Blueprint $table) {
             $table->id();
-            $table->foreignId(Hospital::class);
+            $table->foreignIdFor(Hospital::class)->constrained()->onDelete('cascade');
             $table->string('status');
             $table->string('latitude');
             $table->string('longitude');
             $table->string('license_number')->unique();
-            $table->foreignId(Driver::class);
             $table->timestamps();
         });
     }

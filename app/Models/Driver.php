@@ -10,11 +10,14 @@ class Driver extends Model
         'name',
         'phone',
         'driver_license',
-        'ambulance_id'
+        'hospital_id'
     ];
 
     public function ambulance()
     {
-        return $this->belongsTo(Ambulance::class);
+        return $this->belongsTo(Ambulance::class, 'driver_id');
+    }
+    public function hospital(){
+        return  $this->belongsTo(Hospital::class, 'hospital_id');
     }
 }
