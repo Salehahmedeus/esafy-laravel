@@ -12,8 +12,9 @@ class HospitalController extends Controller
     public function registerHospital(Request $request)
     {
 
-        $hospitalCount = Hospital::count();
-        if (!$hospitalCount == 0) {
+        $hospitalCount = Hospital::where('admin_id', auth('admin')->user()->id)->first();
+
+        if (!$hospitalCount == null) {
             return response()->json([
                 'message' => ' there is alradey a hospital  '
             ]);
